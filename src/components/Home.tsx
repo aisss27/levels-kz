@@ -1,14 +1,12 @@
-import React from 'react';
+import { SearchAppBar } from './header/SearchAppBar.tsx';
+import { CompanyInfo } from './CompanyInfo/CompanyInfo.tsx';
 
-const Home = () => {
+export const Home = () => {
     return (
         <div>
-            <header>
-
-            </header>
-            Home page
+            <SearchAppBar/>
+          <CompanyInfo/>
         </div>
     );
 };
 
-export default Home;
