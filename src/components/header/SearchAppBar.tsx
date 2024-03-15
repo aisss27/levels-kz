@@ -9,8 +9,17 @@ import { NavLink } from 'react-router-dom';
 import styles from './Header.module.css';
 
 export function SearchAppBar() {
-  const companies = ['Kolesa', 'OneTech', 'Kaspi', 'Jusan',
-    'Halyk', 'Beeline', 'Epam', 'Dar', 'Chocofamily'];
+  const companies = [
+    'Kolesa',
+    'OneTech',
+    'Kaspi',
+    'Jusan',
+    'Halyk',
+    'Beeline',
+    'Epam',
+    'Dar',
+    'Chocofamily',
+  ];
 
   return (
     <Box sx={{ flexGrow: 1 }}>
