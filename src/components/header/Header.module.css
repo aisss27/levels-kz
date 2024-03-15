@@ -3,8 +3,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #222; /* Dark background color for the header */
-  color: white; /* White text color for the header */
+  background-color: #222;
+  color: white;
 }
 
 .logo {
@@ -25,7 +25,7 @@
   list-style-type: none;
   display: flex;
   align-items: center;
-  gap: 40px; /* Decreased the gap between links */
+  gap: 40px;
 }
 
 .links .link {
