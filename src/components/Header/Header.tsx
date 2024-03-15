@@ -8,7 +8,7 @@ import TextField from '@mui/material/TextField';
 import { NavLink } from 'react-router-dom';
 import styles from './Header.module.css';
 
-export function SearchAppBar() {
+export function Header() {
   const companies = [
     'Kolesa',
     'OneTech',
