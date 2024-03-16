@@ -1,4 +1,5 @@
 import styles from './CompanyInfo.module.css';
+import BarChartSalaries from '../BarChart/BarChartSalaries.tsx';
 
 export const CompanyInfo = () => {
   return (
@@ -20,13 +21,7 @@ export const CompanyInfo = () => {
           <li>Системный администратор: 200 000 KZT - 300 000 KZT</li>
         </ul>
       </div>
-      <div className={styles.imageSection}>
-        <img
-          src="https://img.kapital.kz/gtCLRZcMtGM/bG9jYWw6Ly8vMC85LzkvYy84LzY0MzU4YjgzM2NlYjQ5YjgwZjBlZGU0Njc2YS5wbmc"
-          alt="IT Salary Illustration"
-          className={styles.image}
-        />
-      </div>
+      <BarChartSalaries/>
       <div className={styles.card}>
         <h3 className={styles.subHeading}>Факторы, влияющие на зарплаты</h3>
         <p>
