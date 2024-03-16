@@ -3,8 +3,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #222; /* Dark background color for the header */
-    color: white; /* White text color for the header */
+    background-color: #222;
+    color: white;
 }
 
 .logo {
@@ -70,6 +70,6 @@
     color: #fff;
 }
 
-.MuiInputBaseRoot input{
+.MuiInputBaseRoot input {
     color: #fff;
 }
