@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './CompanyInfo.module.css';
 
 export const CompanyInfo = () => {
@@ -45,4 +44,3 @@ export const CompanyInfo = () => {
     </div>
   );
 };
-

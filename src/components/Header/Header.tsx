@@ -7,9 +7,18 @@ import TextField from '@mui/material/TextField';
 import { NavLink } from 'react-router-dom';
 import styles from './Header.module.css';
 
-export function SearchAppBar() {
-  const companies = ['Kolesa', 'OneTech', 'Kaspi', 'Jusan',
-    'Halyk', 'Beeline', 'Epam', 'Dar', 'Chocofamily'];
+export function Header() {
+  const companies = [
+    'Kolesa',
+    'OneTech',
+    'Kaspi',
+    'Jusan',
+    'Halyk',
+    'Beeline',
+    'Epam',
+    'Dar',
+    'Chocofamily',
+  ];
 
   return (
     <Box sx={{ flexGrow: 1 }}>
