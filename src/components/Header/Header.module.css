@@ -3,8 +3,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #222; /* Dark background color for the header */
-    color: white; /* White text color for the header */
+    background-color: #222;
+    color: white;
 }
 
 .logo {
@@ -55,4 +55,21 @@
 
 .links .link:hover {
     color: #ffc107;
+}
+
+.MuiAutocomplete {
+    min-width: 300px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    border: 1px solid #fff;
+    border-radius: 4px;
+}
+
+.iconColor {
+    color: #fff;
+}
+
+.MuiInputBaseRoot input {
+    color: #fff;
 }

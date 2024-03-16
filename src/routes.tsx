@@ -3,11 +3,9 @@ import { Home } from './components/Home.tsx';
 import Form from "./components/AddSalaryPage/Form.tsx";
 import { InitialValues } from "./components/AddSalaryPage/InitialValues.ts";
 
-
-
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Home />,
   },
   {
