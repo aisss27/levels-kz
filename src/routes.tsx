@@ -14,4 +14,8 @@ export const router = createBrowserRouter([
     path: "/addsalary",
     element: <Form initialValues={InitialValues}/>,
   },
+  {
+    path: "/addsalary",
+    element: <Form initialValues={InitialValues}/>,
+  },
 ]);
