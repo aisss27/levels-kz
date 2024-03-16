@@ -1,5 +1,5 @@
-import { Header } from '../components/header/Header.tsx';
-import { Dashboard } from '../components/Dashboard/Dashboard.tsx';
+import { Dashboard } from '../../components/Dashboard/Dashboard';
+import { Header } from '../../components/header/Header';
 
 
 export const Home = () => {

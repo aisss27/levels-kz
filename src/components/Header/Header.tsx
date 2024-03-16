@@ -33,7 +33,7 @@ export function Header() {
             <span className={styles.logo_text}>Levels</span>
           </div>
           <ul className={styles.links}>
-            <NavLink className={styles.link} to="/add">
+            <NavLink className={styles.link} to="/addsalary">
               Add
             </NavLink>
             <NavLink className={styles.link} to="/companies">
@@ -64,4 +64,3 @@ export function Header() {
     </Box>
   );
 }
-
