@@ -1,4 +1,3 @@
-import { styled } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -42,19 +41,21 @@ export function Header() {
             </NavLink>
           </ul>
 
-          <StyledAutocomplete
+          <Autocomplete
+            className={styles.MuiAutocomplete}
             freeSolo
             id="free-solo-2-demo"
             disableClearable
             options={companies.map((option) => option)}
             renderInput={(params) => (
-              <StyledTextField
+              <TextField
                 {...params}
                 InputProps={{
                   ...params.InputProps,
                   type: 'search',
-                  startAdornment: <SearchIconWrapper />,
+                  startAdornment: <SearchIcon className={styles.iconColor} />,
                 }}
+                className={styles.MuiInputBaseRoot}
               />
             )}
           />
@@ -64,36 +65,3 @@ export function Header() {
   );
 }
 
-export const StyledAutocomplete = styled(Autocomplete)(({}) => ({
-  '& .MuiInputBase-root': {
-    color: '#fff', // Change text color to white
-  },
-  '&:focus-within': {
-    '& .MuiInputBase-input': {
-      borderColor: '#fff', // Change border color when focused
-    },
-  },
-  '& .MuiAutocomplete-inputRoot': {
-    color: '#fff', // Change input text color to white
-    display: 'flex',
-    border: '1px solid #fff',
-    alignItems: 'center',
-    minWidth: '200px',
-    '& .MuiAutocomplete-input': {
-      padding: '10px',
-    },
-  },
-}));
-
-export const StyledTextField = styled(TextField)(({ theme }) => ({
-  '& .MuiInputBase-input': {
-    padding: '10px',
-  },
-  '& .MuiInputAdornment-root': {
-    marginLeft: theme.spacing(1),
-  },
-}));
-
-export const SearchIconWrapper = styled(SearchIcon)(({}) => ({
-  color: '#fff', // Set search icon color to white
-}));
