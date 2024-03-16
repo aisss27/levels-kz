@@ -23,7 +23,10 @@ export interface LatestProductsProps {
   sx?: SxProps;
 }
 
-  export function PopularCompanies({ products = [], sx }: LatestProductsProps): React.JSX.Element {
+export function PopularCompanies({
+  products = [],
+  sx,
+}: LatestProductsProps): React.JSX.Element {
   return (
     <Card sx={sx}>
       <CardHeader title="Popular Companies" />
@@ -33,7 +36,11 @@ export interface LatestProductsProps {
           <ListItem divider={index < products.length - 1} key={product.id}>
             <ListItemAvatar>
               {product.image ? (
-                <Box component="img" src={product.image} sx={{ borderRadius: 1, height: '48px', width: '48px' }} />
+                <Box
+                  component="img"
+                  src={product.image}
+                  sx={{ borderRadius: 1, height: '48px', width: '48px' }}
+                />
               ) : (
                 <Box
                   sx={{
@@ -58,11 +65,7 @@ export interface LatestProductsProps {
       </List>
       <Divider />
       <CardActions sx={{ justifyContent: 'center' }}>
-        <Button
-          color="inherit"
-          size="large"
-          variant="text"
-        >
+        <Button color="inherit" size="large" variant="text">
           View all
         </Button>
       </CardActions>
