@@ -2,8 +2,8 @@ import { BarChart } from '@mui/x-charts/BarChart';
 import styles from './BarChartSalaries.module.css'
 
 const chartSetting = {
-  width: 1200,
-  height: 600,
+  width: 700,
+  height: 400,
 };
 const dataset = [
   {
