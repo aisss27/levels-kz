@@ -4,6 +4,7 @@ import { Formik } from "formik/dist";
 import { InferType } from 'yup';
 import { InitialValues } from './InitialValues';
 import { addSalarySchema } from './AddSalarySchema';
+import InfiniteScroller from '../InfiniteScroller/InfiniteScroller';
 
 
 export type AddSalary = InferType<typeof addSalarySchema>;
@@ -31,6 +32,7 @@ const Form = ({ initialValues }: FormProps) => {
 
             }}
         >
+            <InfiniteScroller />
             <Typography fontWeight="500" variant="h5" sx={{ mb: "1.5rem" }}>
                 Welcome to Levels
             </Typography>
