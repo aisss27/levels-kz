@@ -1,6 +1,6 @@
 
 import { Box, useTheme, useMediaQuery, TextField, Button, Typography, InputAdornment } from '@mui/material';
-import { Formik } from "formik";
+import { Formik } from "formik/dist";
 import { InferType } from 'yup';
 import { InitialValues } from './InitialValues';
 import { addSalarySchema } from './AddSalarySchema';
