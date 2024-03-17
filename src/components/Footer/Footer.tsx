@@ -1,5 +1,7 @@
 import styles from './Footer.module.css';
-import aisavatar from '../../asssets/photos/aisphoto.jpeg';
+import aisavatar from '../../../public/aisphoto.jpeg'
+import arsavatar from '../../../public/arsphoto.jpg';
+
 
 export const Footer = () => {
   const developers = [
@@ -16,7 +18,7 @@ export const Footer = () => {
     {
       name: 'Arslan',
       githubUsername: 'barbarian10',
-      avatarUrl: 'https://avatars.githubusercontent.com/u/3?v=4',
+      avatarUrl: `${arsavatar}`,
     },
   ];
 
