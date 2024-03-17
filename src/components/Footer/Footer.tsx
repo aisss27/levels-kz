@@ -1,6 +1,5 @@
 import styles from './Footer.module.css';
 import aisavatar from '../../../public/aisphoto.jpeg'
-import arsavatar from '../../../public/arsphoto.jpg';
 
 
 export const Footer = () => {
@@ -18,7 +17,7 @@ export const Footer = () => {
     {
       name: 'Arslan',
       githubUsername: 'barbarian10',
-      avatarUrl: `${arsavatar}`,
+      avatarUrl: 'https://avatars.githubusercontent.com/u/103827187?s=400&u=1ac8e83f7c43af03ed1124857751bd91c0dca269&v=4',
     },
   ];
 
