@@ -1,0 +1,57 @@
+.footer {
+    background-color: #222;
+    color: white;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.developerContainer {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.developerCard {
+    text-align: center;
+    margin: 20px;
+    width: 200px;
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.developerCard:hover {
+    transform: translateY(-5px);
+}
+
+.developerImage {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    align-self: center;
+}
+
+.githubLink {
+    color: #ffc107;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.githubLink:hover {
+    color: white;
+}
+
+.footerText {
+    text-align: center;
+    color: #ffc107;
+    font-weight: bold;
+}
