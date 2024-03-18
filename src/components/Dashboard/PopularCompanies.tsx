@@ -14,19 +14,19 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Modal from '@mui/material/Modal';
 import styles from './PopularCompanies.module.css';
 
-export interface Product {
+export interface Company {
   id: string;
   image: string;
   name: string;
 }
 
 export interface LatestProductsProps {
-  products?: Product[];
+  companies?: Company[];
   sx?: SxProps;
 }
 
 export function PopularCompanies({
-  products = [],
+  companies = [],
   sx,
 }: LatestProductsProps): React.JSX.Element {
   const [open, setOpen] = React.useState(false);
@@ -35,19 +35,18 @@ export function PopularCompanies({
       <CardHeader title="Popular Companies" />
       <Divider />
       <List>
-        {products.slice(0, 5).map(
+        {companies.slice(0, 5).map(
           (
-            product,
-            index // Slice the array to show only the first 5 items
+            company,
+            index
           ) => (
-            <ListItem divider={index < 4} key={product.id}>
+            <ListItem divider={index < 4} key={company.id}>
               {' '}
-              {/* Add a divider for all items except the last one */}
               <ListItemAvatar>
-                {product.image ? (
+                {company.image ? (
                   <Box
                     component="img"
-                    src={product.image}
+                    src={company.image}
                     sx={{ borderRadius: 1, height: '48px', width: '48px' }}
                   />
                 ) : (
@@ -62,7 +61,7 @@ export function PopularCompanies({
                 )}
               </ListItemAvatar>
               <ListItemText
-                primary={product.name}
+                primary={company.name}
                 primaryTypographyProps={{ variant: 'subtitle1' }}
                 secondaryTypographyProps={{ variant: 'body2' }}
               />
@@ -93,20 +92,20 @@ export function PopularCompanies({
             <table className={styles.table}>
               <thead className={styles.table_heading}>Popular Companies</thead>
               <tbody>
-                {products.map((product) => (
-                  <tr key={product.id}>
+                {companies.map((company) => (
+                  <tr key={company.id}>
                     <td>
                       <div className={styles.companyLogoName}>
                         <Box
                           component="img"
-                          src={product.image}
+                          src={company.image}
                           sx={{
                             borderRadius: 1,
                             height: '48px',
                             width: '48px',
                           }}
                         />
-                        {product.name}
+                        {company.name}
                       </div>
                       <Button
                         variant="contained"
