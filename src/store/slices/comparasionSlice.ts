@@ -14,7 +14,9 @@ export const comparasionSlice = createSlice({
   initialState,
   reducers: {
     addToComparison: (state, action: PayloadAction<string>) => {
-      state.comparedCompaniesId.push(action.payload);
+      if (!state.comparedCompaniesId.includes(action.payload)) {
+        state.comparedCompaniesId.push(action.payload);
+      }
     },
     deleteFromComparison: (state, action: PayloadAction<string>) => {
       state.comparedCompaniesId = state.comparedCompaniesId.filter(
