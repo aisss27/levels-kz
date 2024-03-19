@@ -1,5 +1,5 @@
-import { useSelector } from 'react-redux';
-import { Stack } from '@mui/material';
+import { useSelector, useDispatch } from 'react-redux';
+import { Button, Stack } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -8,8 +8,10 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { RootState } from '../store/store.ts';
+import { deleteFromComparison } from '../store/slices/comparasionSlice.ts';
 
 export const CompanyComparison = () => {
+  const dispatch = useDispatch();
   const comparedCompaniesId = useSelector(
     (state: RootState) => state.comparasionReducer.comparedCompaniesId
   );
@@ -20,6 +22,10 @@ export const CompanyComparison = () => {
   const comparedCompaniesList = companiesList.filter((company) =>
     comparedCompaniesId.includes(company.id)
   );
+
+  const handleDelete = (companyId: string) => {
+    dispatch(deleteFromComparison(companyId));
+  };
 
   return (
     <Stack alignItems="center" gap={4}>
@@ -34,6 +40,7 @@ export const CompanyComparison = () => {
               <TableCell>Company name</TableCell>
               <TableCell>Company logo</TableCell>
               <TableCell>Average salary</TableCell>
+              <TableCell>Delete company</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -50,6 +57,11 @@ export const CompanyComparison = () => {
                   />
                 </TableCell>
                 <TableCell>{company.avarageSalary}</TableCell>
+                <TableCell>
+                  <Button onClick={() => handleDelete(company.id)}>
+                    Delete
+                  </Button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
