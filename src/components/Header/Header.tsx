@@ -42,6 +42,9 @@ export function Header() {
             <NavLink className={styles.link} to="/company-comparison">
               Company comparison
             </NavLink>
+            <NavLink className={styles.link} to="/login">
+              Login
+            </NavLink>
           </ul>
 
           <Autocomplete
