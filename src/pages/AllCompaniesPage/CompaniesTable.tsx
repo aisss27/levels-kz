@@ -12,7 +12,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import { visuallyHidden } from '@mui/utils';
-import { products } from '../Dashboard/data';
+import { products } from '../../components/Dashboard/data';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import { redirect } from 'react-router-dom';
 

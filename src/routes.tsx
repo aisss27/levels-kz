@@ -2,8 +2,8 @@ import { createBrowserRouter } from 'react-router-dom';
 import Form from './components/AddSalaryPage/Form.tsx';
 import { InitialValues } from './components/AddSalaryPage/InitialValues.ts';
 import { Home } from './pages/Home/Home.tsx';
-import { CompanyPage } from './components/CompanyPage/CompanyPage.tsx';
-import { CompaniesPage } from './components/AllCompaniesPage/CompaniesPage.tsx';
+import { CompanyPage } from './pages/CompanyPage/CompanyPage.tsx';
+import { CompaniesPage } from './pages/AllCompaniesPage/CompaniesPage.tsx';
 
 export const router = createBrowserRouter([
   {

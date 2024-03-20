@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
-import { Header } from '../Header/Header';
+import { Header } from '../../components/Header/Header';
 import EnhancedTable from './CompaniesTable';
-import { Footer } from '../Footer/Footer';
+import { Footer } from '../../components/Footer/Footer';
 
 export const CompaniesPage = () => {
   return (
