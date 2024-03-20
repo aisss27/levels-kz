@@ -1,11 +1,10 @@
-import { createBrowserRouter } from 'react-router-dom';
 import Form from './components/AddSalaryPage/Form.tsx';
 import { InitialValues } from './components/AddSalaryPage/InitialValues.ts';
 import { Home } from './pages/Home/Home.tsx';
 import { CompanyComparison } from './pages/CompanyComparison.tsx';
 import LoginPage from './pages/LoginPage/LoginPage.tsx';
 
-export const router = createBrowserRouter([
+export const routes = [
   {
     path: '/',
     element: <Home />,
@@ -22,4 +21,4 @@ export const router = createBrowserRouter([
     path: '/login',
     element: <LoginPage />,
   },
-]);
+];
