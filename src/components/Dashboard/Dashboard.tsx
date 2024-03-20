@@ -1,6 +1,6 @@
 import { Grid } from '@mui/material';
 import { MyCompanies } from './MyCompanies.tsx';
-import { PopularCompanies } from './PopularCompanies.tsx';
+import { PopularCompanies } from '../PopularCompanies/PopularCompanies.tsx';
 import { Salaries } from './Salaries.tsx';
 import { Traffic } from './Traffic.tsx';
 import { orders, companies } from './data.ts';

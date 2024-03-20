@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Modal from '@mui/material/Modal';
-import { Company } from '../Dashboard/PopularCompanies.tsx';
+import { Company } from '../PopularCompanies/PopularCompanies.tsx';
 import styles from './PopularCompaniesModal.module.css';
 
 type PopularCompaniesModalProps = {
