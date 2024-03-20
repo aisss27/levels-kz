@@ -21,7 +21,7 @@
   top: 0;
   width: 250px;
   height: 100%;
-  content: "";
+  content: '';
   z-index: 2;
 }
 
@@ -54,6 +54,5 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-wrap: wrap;
   text-align: center;
 }

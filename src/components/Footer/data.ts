@@ -1,5 +1,4 @@
 import aisavatar from '/aisphoto.jpeg';
-import arsavatar from '/arsphoto.jpg';
 
 export const developers = [
   {
@@ -15,6 +14,6 @@ export const developers = [
   {
     name: 'Arslan',
     githubUsername: 'barbarian10',
-    avatarUrl: `${arsavatar}`,
+    avatarUrl: 'https://avatars.githubusercontent.com/u/103827187?v=4',
   },
 ];
