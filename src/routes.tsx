@@ -1,10 +1,9 @@
-import { createBrowserRouter } from 'react-router-dom';
 import { Home } from './pages/Home/Home.tsx';
 import { CompanyComparison } from './pages/CompanyComparison.tsx';
 import LoginPage from './pages/LoginPage/LoginPage.tsx';
 import AddSalaryPage from './pages/AddSalaryPage/AddSalaryPage.tsx';
 
-export const router = createBrowserRouter([
+export const routes = [
   {
     path: '/',
     element: <Home />,
@@ -21,4 +20,4 @@ export const router = createBrowserRouter([
     path: '/login',
     element: <LoginPage />,
   },
-]);
+];
