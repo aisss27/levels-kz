@@ -1,8 +1,7 @@
-import Form from './components/AddSalaryPage/Form.tsx';
-import { InitialValues } from './components/AddSalaryPage/InitialValues.ts';
 import { Home } from './pages/Home/Home.tsx';
 import { CompanyComparison } from './pages/CompanyComparison.tsx';
 import LoginPage from './pages/LoginPage/LoginPage.tsx';
+import AddSalaryPage from './pages/AddSalaryPage/AddSalaryPage.tsx';
 
 export const routes = [
   {
@@ -11,7 +10,7 @@ export const routes = [
   },
   {
     path: '/addsalary',
-    element: <Form initialValues={InitialValues} />,
+    element: <AddSalaryPage />,
   },
   {
     path: '/company-comparison',
