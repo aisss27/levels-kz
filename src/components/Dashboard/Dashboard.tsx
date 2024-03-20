@@ -4,13 +4,10 @@ import { PopularCompanies } from './PopularCompanies.tsx';
 import { Salaries } from './Salaries.tsx';
 import { Traffic } from './Traffic.tsx';
 import { orders, companies } from './data.ts';
-import { HomeInfo } from '../HomeInfo/HomeInfo.tsx';
-import InfiniteScroller from '../InfiniteScroller/InfiniteScroller.tsx';
 
 export function Dashboard() {
   return (
     <>
-      <HomeInfo />
       <Grid container spacing={3} sx={{ padding: '20px' }}>
         <Grid item lg={6} md={12} xs={12}>
           <Salaries sx={{ height: '100%' }} />
@@ -29,7 +26,6 @@ export function Dashboard() {
           <MyCompanies orders={orders} sx={{ height: '100%' }} />
         </Grid>
       </Grid>
-      <InfiniteScroller />
     </>
   );
 }
