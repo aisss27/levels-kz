@@ -1,5 +1,5 @@
-import aisavatar from '/public/aisphoto.jpeg';
-import arsavatar from '/public/arsphoto.jpg';
+import aisavatar from '/aisphoto.jpeg';
+import arsavatar from '/arsphoto.jpg';
 
 export const developers = [
   {
