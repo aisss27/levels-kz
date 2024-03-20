@@ -4,7 +4,7 @@ import { PopularCompanies } from './PopularCompanies.tsx';
 import { Salaries } from './Salaries.tsx';
 import { Traffic } from './Traffic.tsx';
 import { orders, companies } from './data.ts';
-import { HomeInfo } from '../CompanyInfo/HomeInfo.tsx';
+import { HomeInfo } from '../HomeInfo/HomeInfo.tsx';
 import InfiniteScroller from '../InfiniteScroller/InfiniteScroller.tsx';
 
 export function Dashboard() {

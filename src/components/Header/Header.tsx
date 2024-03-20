@@ -2,23 +2,16 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import SearchIcon from '@mui/icons-material/Search';
-import Autocomplete from '@mui/material/Autocomplete';
+import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import { NavLink } from 'react-router-dom';
 import styles from './Header.module.css';
+import { companies } from '../Dashboard/data.ts';
 
 export function Header() {
-  const companies = [
-    'Kolesa',
-    'OneTech',
-    'Kaspi',
-    'Jusan',
-    'Halyk',
-    'Beeline',
-    'Epam',
-    'Dar',
-    'Chocofamily',
-  ];
+  const filterOptions = createFilterOptions({
+    limit: 5,
+  });
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -52,7 +45,8 @@ export function Header() {
             freeSolo
             id="free-solo-2-demo"
             disableClearable
-            options={companies.map((option) => option)}
+            filterOptions={filterOptions}
+            options={companies.map((option) => option.name)}
             renderInput={(params) => (
               <TextField
                 {...params}
