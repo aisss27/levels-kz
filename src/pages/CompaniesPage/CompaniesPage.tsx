@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -6,14 +6,20 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { RootState } from '../../store/store.ts';
-import styles from './CompaniesPage.module.css';
 import { Button } from '@mui/material';
+import { RootState } from '../../store/store.ts';
+import { addToComparison } from '../../store/slices/comparasionSlice.ts';
+import styles from './CompaniesPage.module.css';
 
 export default function CompaniesPage() {
+  const dispatch = useDispatch();
   const companiesList = useSelector(
     (state: RootState) => state.companiesListReducer.companiesList
   );
+
+  const AddToCompare = (companyId: string) => {
+    dispatch(addToComparison(companyId));
+  };
 
   return (
     <>
@@ -50,10 +56,10 @@ export default function CompaniesPage() {
                 </TableCell>
                 <TableCell>{company.avarageSalary}</TableCell>
                 <TableCell>
-                  <Button>Add</Button>
+                  <Button onClick={() => AddToCompare(company.id)}>Add</Button>
                 </TableCell>
                 <TableCell>
-                  <Button>Go</Button>
+                  <Button>Go to</Button>
                 </TableCell>
               </TableRow>
             ))}
