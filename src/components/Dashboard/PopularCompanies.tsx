@@ -82,45 +82,13 @@ export function PopularCompanies({
         >
           View all
         </Button>
-        <Modal
-          open={open}
-          onClose={() => setOpen(false)}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box className={styles.modalBox}>
-            <table className={styles.table}>
-              <thead className={styles.table_heading}>Popular Companies</thead>
-              <tbody>
-                {companies.map((company) => (
-                  <tr key={company.id}>
-                    <td>
-                      <div className={styles.companyLogoName}>
-                        <Box
-                          component="img"
-                          src={company.image}
-                          sx={{
-                            borderRadius: 1,
-                            height: '48px',
-                            width: '48px',
-                          }}
-                        />
-                        {company.name}
-                      </div>
-                      <Button
-                        variant="contained"
-                        endIcon={<ArrowForwardIcon />}
-                      >
-                        explore
-                      </Button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </Box>
-        </Modal>
       </CardActions>
+
+      <PopularCompaniesModal
+        open={open}
+        setOpen={setOpen}
+        companies={companies}
+      />
     </Card>
   );
 }
