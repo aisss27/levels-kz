@@ -5,29 +5,31 @@ import { Salaries } from './Salaries.tsx';
 import { Traffic } from './Traffic.tsx';
 import { orders, products } from './data.ts';
 import { HomeInfo } from '../CompanyInfo/HomeInfo.tsx';
+import InfiniteScroller from '../InfiniteScroller/InfiniteScroller.tsx';
 
 export function Dashboard() {
   return (
     <>
-    <HomeInfo/>
-    <Grid container spacing={3} sx={{padding: '20px'}}>
-      <Grid lg={6} md={12} xs={12}>
-        <Salaries sx={{ height: '100%' }} />
+      <HomeInfo />
+      <Grid container spacing={3} sx={{ padding: '20px' }}>
+        <Grid lg={6} md={12} xs={12}>
+          <Salaries sx={{ height: '100%' }} />
+        </Grid>
+        <Grid lg={6} md={12} xs={12}>
+          <Traffic
+            chartSeries={[40, 40, 20]}
+            labels={['Frontend', 'Backend', 'UI/UX']}
+            sx={{ height: '100%' }}
+          />
+        </Grid>
+        <Grid lg={6} md={12} xs={12}>
+          <PopularCompanies products={products} sx={{ height: '100%' }} />
+        </Grid>
+        <Grid lg={6} md={12} xs={12}>
+          <LatestOrders orders={orders} sx={{ height: '100%' }} />
+        </Grid>
       </Grid>
-      <Grid lg={6} md={12} xs={12}>
-        <Traffic
-          chartSeries={[40, 40, 20]}
-          labels={['Frontend', 'Backend', 'UI/UX']}
-          sx={{ height: '100%' }}
-        />
-      </Grid>
-      <Grid lg={6} md={12} xs={12}>
-        <PopularCompanies products={products} sx={{ height: '100%' }} />
-      </Grid>
-      <Grid lg={6} md={12} xs={12}>
-        <LatestOrders orders={orders} sx={{ height: '100%' }} />
-      </Grid>
-    </Grid>
+      <InfiniteScroller />
     </>
   );
 }
