@@ -1,6 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import Form from './components/AddSalaryPage/Form.tsx';
-import { InitialValues } from './components/AddSalaryPage/InitialValues.ts';
+import Form from './pages/AddSalaryPage/Form.tsx';
 import { Home } from './pages/Home/Home.tsx';
 import { CompanyComparison } from './pages/CompanyComparison.tsx';
 import LoginPage from './pages/LoginPage/LoginPage.tsx';
@@ -12,7 +11,7 @@ export const router = createBrowserRouter([
   },
   {
     path: '/addsalary',
-    element: <Form initialValues={InitialValues} />,
+    element: <Form />,
   },
   {
     path: '/company-comparison',

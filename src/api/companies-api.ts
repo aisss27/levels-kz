@@ -36,7 +36,7 @@ export const companiesApi = {
   updateCompany(id: string, name: string) {
     return instance.put(`companies/${id}`, { name });
   },
-  deleteCompany(id:string) {
+  deleteCompany(id: string) {
     return instance.delete(`companies/${id}`);
   },
   getLocations() {
@@ -46,33 +46,72 @@ export const companiesApi = {
     return instance.post('locations', { name });
   },
   updateLocation(id: string, name: string) {
-    return instance.put(`locations/${id}`, { name })
+    return instance.put(`locations/${id}`, { name });
   },
-  deleteLocation(id:string) {
+  deleteLocation(id: string) {
     return instance.delete(`locations/${id}`);
   },
   getSalaries() {
     return instance.get('salaries');
   },
-  createSalary(email: string, location: string, specialization: string, salary: number, yoe: number, yac: number, grade: string) {
-    return instance.post('salaries', { email, location, specialization, salary, yoe, yac, grade, });
+  getGrades() {
+    return instance.get('grades');
   },
-  updateSalary(id: string, email: string, location: string, specialization: string, salary: number, yoe: number, yac: number, grade: string) {
-    return instance.put(`salaries/${id}`, { email, location, specialization, salary, yoe, yac, grade, });
+  createSalary(
+    email: string,
+    location: string,
+    specialization: string,
+    salary: {
+      base: number;
+      bonus: number;
+    },
+    yoe: number,
+    yac: number,
+    grade: string
+  ) {
+    return instance.post('salaries', {
+      email,
+      location,
+      specialization,
+      salary,
+      yoe,
+      yac,
+      grade,
+    });
   },
-  deleteSalary(id:string) {
+  updateSalary(
+    id: string,
+    email: string,
+    location: string,
+    specialization: string,
+    salary: number,
+    yoe: number,
+    yac: number,
+    grade: string
+  ) {
+    return instance.put(`salaries/${id}`, {
+      email,
+      location,
+      specialization,
+      salary,
+      yoe,
+      yac,
+      grade,
+    });
+  },
+  deleteSalary(id: string) {
     return instance.delete(`salaries/${id}`);
   },
   getAllSpecializations() {
     return instance.get('specializations');
   },
-  createSpecialization(name:string) {
+  createSpecialization(name: string) {
     return instance.post('specializations', { name });
   },
-  updateSpecialization(id:string, name:string) {
+  updateSpecialization(id: string, name: string) {
     return instance.put(`specializations/${id}`, { name });
   },
-  deleteSpecialization(id:string) {
+  deleteSpecialization(id: string) {
     return instance.delete(`specializations/${id}`);
-  }
+  },
 };
