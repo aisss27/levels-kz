@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import Form from './pages/AddSalaryPage/Form.tsx';
+import Form from './pages/AddSalaryPage/AddSalaryPage.tsx';
 import { Home } from './pages/Home/Home.tsx';
 import { CompanyComparison } from './pages/CompanyComparison.tsx';
 import LoginPage from './pages/LoginPage/LoginPage.tsx';

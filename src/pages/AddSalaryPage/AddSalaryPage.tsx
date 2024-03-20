@@ -54,7 +54,7 @@ function getStyles(name: string, selectedValues: string[], theme: Theme) {
   };
 }
 
-const Form = () => {
+const AddSalaryPage = () => {
   const { palette } = useTheme();
   const isNonMobile = useMediaQuery('(min-width: 1000px)');
   const theme = useTheme();
@@ -337,4 +337,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default AddSalaryPage;
