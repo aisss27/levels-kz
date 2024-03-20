@@ -1,9 +1,5 @@
 import { BarChart } from '@mui/x-charts/BarChart';
 
-const chartSetting = {
-  width: 700,
-  height: 400,
-};
 const dataset = [
   {
     junior: 900,
@@ -43,7 +39,6 @@ export default function BarChartSalaries() {
         { dataKey: 'middle', label: 'Middle', valueFormatter },
         { dataKey: 'senior', label: 'Senior', valueFormatter },
       ]}
-      {...chartSetting}
     />
   );
 }
