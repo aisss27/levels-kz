@@ -5,6 +5,7 @@ import { Salaries } from './Salaries.tsx';
 import { Traffic } from './Traffic.tsx';
 import { orders, companies } from './data.ts';
 import { HomeInfo } from '../HomeInfo/HomeInfo.tsx';
+import InfiniteScroller from '../InfiniteScroller/InfiniteScroller.tsx';
 
 export function Dashboard() {
   return (
@@ -28,6 +29,7 @@ export function Dashboard() {
           <MyCompanies orders={orders} sx={{ height: '100%' }} />
         </Grid>
       </Grid>
+      <InfiniteScroller />
     </>
   );
 }
