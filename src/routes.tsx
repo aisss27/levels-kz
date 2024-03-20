@@ -1,8 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
-import Form from './pages/AddSalaryPage/AddSalaryPage.tsx';
 import { Home } from './pages/Home/Home.tsx';
 import { CompanyComparison } from './pages/CompanyComparison.tsx';
 import LoginPage from './pages/LoginPage/LoginPage.tsx';
+import AddSalaryPage from './pages/AddSalaryPage/AddSalaryPage.tsx';
 
 export const router = createBrowserRouter([
   {
@@ -11,7 +11,7 @@ export const router = createBrowserRouter([
   },
   {
     path: '/addsalary',
-    element: <Form />,
+    element: <AddSalaryPage />,
   },
   {
     path: '/company-comparison',
