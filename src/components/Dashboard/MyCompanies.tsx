@@ -9,22 +9,24 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import React from 'react';
 
 export interface Order {
   id: string;
   status: string;
 }
 
-export interface LatestOrdersProps {
+export interface MyCompaniesProps {
   orders?: Order[];
   sx?: SxProps;
 }
 
-export function LatestOrders({ orders = [], sx }: LatestOrdersProps): React.JSX.Element {
+export function MyCompanies({
+  orders = [],
+  sx,
+}: MyCompaniesProps): React.JSX.Element {
   return (
     <Card sx={sx}>
-      <CardHeader title="Latest orders" />
+      <CardHeader title="My Companies" />
       <Divider />
       <Box sx={{ overflowX: 'auto' }}>
         <Table sx={{ minWidth: 800 }}>
@@ -36,7 +38,6 @@ export function LatestOrders({ orders = [], sx }: LatestOrdersProps): React.JSX.
           </TableHead>
           <TableBody>
             {orders.map((order) => {
-
               return (
                 <TableRow hover key={order.id}>
                   <TableCell>{order.id}</TableCell>
