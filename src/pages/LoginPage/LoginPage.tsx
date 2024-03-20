@@ -1,16 +1,21 @@
 import { useState } from 'react';
 import axios from 'axios';
 import styles from './LoginPage.module.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = () => {
     axios.post('https://onelab-levels-api.vercel.app/api/auth/signin', {
       email: email,
       password: password,
-    });
+    })
+      .then(() => {
+        navigate('/');
+      })
   };
 
   return (
