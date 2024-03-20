@@ -3,6 +3,7 @@ import { InitialValues } from './components/AddSalaryPage/InitialValues.ts';
 import { Home } from './pages/Home/Home.tsx';
 import { CompanyComparison } from './pages/CompanyComparison.tsx';
 import LoginPage from './pages/LoginPage/LoginPage.tsx';
+import CompaniesPage from './pages/CompaniesPage/CompaniesPage.tsx';
 
 export const routes = [
   {
@@ -20,5 +21,9 @@ export const routes = [
   {
     path: '/login',
     element: <LoginPage />,
+  },
+  {
+    path: '/companies',
+    element: <CompaniesPage />,
   },
 ];
