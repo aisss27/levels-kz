@@ -1,5 +1,4 @@
 import { BarChart } from '@mui/x-charts/BarChart';
-import styles from './BarChartSalaries.module.css'
 
 const chartSetting = {
   width: 700,
@@ -36,18 +35,15 @@ const valueFormatter = (value: number) => `${value}$`;
 
 export default function BarChartSalaries() {
   return (
-    <div className={styles.barChartContainer}>
-      <BarChart
-        className={styles.barChart}
-        dataset={dataset}
-        xAxis={[{ scaleType: 'band', dataKey: 'month' }]}
-        series={[
-          { dataKey: 'junior', label: 'Junior', valueFormatter },
-          { dataKey: 'middle', label: 'Middle', valueFormatter },
-          { dataKey: 'senior', label: 'Senior', valueFormatter },
-        ]}
-        {...chartSetting}
-      />
-    </div>
+    <BarChart
+      dataset={dataset}
+      xAxis={[{ scaleType: 'band', dataKey: 'month' }]}
+      series={[
+        { dataKey: 'junior', label: 'Junior', valueFormatter },
+        { dataKey: 'middle', label: 'Middle', valueFormatter },
+        { dataKey: 'senior', label: 'Senior', valueFormatter },
+      ]}
+      {...chartSetting}
+    />
   );
 }
