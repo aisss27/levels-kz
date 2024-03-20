@@ -74,5 +74,8 @@ export const companiesApi = {
   },
   deleteSpecialization(id:string) {
     return instance.delete(`specializations/${id}`);
-  }
+  },
+  getGrades() {
+    return instance.get('grades');
+  },
 };
