@@ -1,6 +1,5 @@
 import styles from './Footer.module.css';
-import aisavatar from '../../../public/aisphoto.jpeg'
-
+import aisavatar from '/aisphoto.jpeg';
 
 export const Footer = () => {
   const developers = [
@@ -17,7 +16,8 @@ export const Footer = () => {
     {
       name: 'Arslan',
       githubUsername: 'barbarian10',
-      avatarUrl: 'https://avatars.githubusercontent.com/u/103827187?s=400&u=1ac8e83f7c43af03ed1124857751bd91c0dca269&v=4',
+      avatarUrl:
+        'https://avatars.githubusercontent.com/u/103827187?s=400&u=1ac8e83f7c43af03ed1124857751bd91c0dca269&v=4',
     },
   ];
 
@@ -26,15 +26,27 @@ export const Footer = () => {
       <div className={styles.developerContainer}>
         {developers.map((developer, index) => (
           <div key={index} className={styles.developerCard}>
-            <img src={developer.avatarUrl} alt={developer.name} className={styles.developerImage} />
+            <img
+              src={developer.avatarUrl}
+              alt={developer.name}
+              className={styles.developerImage}
+            />
             <h3>{developer.name}</h3>
             <p>
-              GitHub: <br/> <a href={`https://github.com/${developer.githubUsername}`} className={styles.githubLink}>{developer.githubUsername}</a>
+              GitHub: <br />{' '}
+              <a
+                href={`https://github.com/${developer.githubUsername}`}
+                className={styles.githubLink}
+              >
+                {developer.githubUsername}
+              </a>
             </p>
           </div>
         ))}
       </div>
-      <p className={styles.footerText}>©️ 2024, LevelsKZ, All Rights Reserved</p>
+      <p className={styles.footerText}>
+        ©️ 2024, LevelsKZ, All Rights Reserved
+      </p>
     </footer>
   );
 };
