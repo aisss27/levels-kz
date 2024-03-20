@@ -6,7 +6,7 @@ export interface IinitialState {
 }
 
 const initialState: IinitialState = {
-  comparedCompaniesId: ['PRD-001', 'PRD-002', 'PRD-026', 'PRD-022'],
+  comparedCompaniesId: [],
 };
 
 export const comparasionSlice = createSlice({

@@ -8,11 +8,13 @@ function App() {
   return (
     <>
       <Header />
-      <Routes>
-        {routes.map((route) => (
-          <Route key={route.path} path={route.path} element={route.element} />
-        ))}
-      </Routes>
+      <main className="main">
+        <Routes>
+          {routes.map((route) => (
+            <Route key={route.path} path={route.path} element={route.element} />
+          ))}
+        </Routes>
+      </main>
       <Footer />
     </>
   );
