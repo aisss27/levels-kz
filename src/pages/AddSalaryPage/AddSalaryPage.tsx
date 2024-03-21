@@ -170,7 +170,7 @@ const AddSalaryPage = () => {
         initialValues={InitialValues}
         validationSchema={addSalarySchema}
       >
-        {({ errors, touched, handleBlur, handleSubmit, resetForm }) => (
+        {({ errors, touched, handleBlur, handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <Box
               display="grid"
@@ -377,7 +377,7 @@ const AddSalaryPage = () => {
             </Box>
             <Button
               fullWidth
-              onClick={() => resetForm()}
+              onClick={handleFormSubmit}
               type="submit"
               sx={{
                 m: '2rem 0',
