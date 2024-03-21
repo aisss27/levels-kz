@@ -6,24 +6,18 @@ import CardActions from '@mui/material/CardActions';
 import CardHeader from '@mui/material/CardHeader';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import type { SxProps } from '@mui/material/styles';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import PopularCompaniesModal from '../PopularCompaniesModal/PopularCompaniesModal.tsx';
-
-export interface Company {
-  id: string;
-  image: string;
-  name: string;
-}
+import { companyType } from '../../types/companyTypes.ts';
 
 export interface LatestProductsProps {
-  companies?: Company[];
+  companies: companyType[];
   sx?: SxProps;
 }
 
-export function PopularCompanies({ companies = [], sx }: LatestProductsProps) {
+export function PopularCompanies({ companies, sx }: LatestProductsProps) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -33,26 +27,7 @@ export function PopularCompanies({ companies = [], sx }: LatestProductsProps) {
       <Box sx={{ width: '80%' }}>
         <List>
           {companies.slice(0, 5).map((company, index) => (
-            <ListItem divider={index < 4} key={company.id}>
-              <ListItemAvatar>
-                {company.image ? (
-                  <Box
-                    component="img"
-                    src={company.image}
-                    sx={{ borderRadius: 1, height: '48px', width: '48px' }}
-                  />
-                ) : (
-                  <Box
-                    sx={{
-                      borderRadius: 1,
-                      backgroundColor: 'var(--mui-palette-neutral-200)',
-                      height: '48px',
-                      width: '48px',
-                    }}
-                  />
-                )}
-              </ListItemAvatar>
-
+            <ListItem divider={index < 4} key={company._id}>
               <ListItemText
                 primary={company.name}
                 primaryTypographyProps={{ variant: 'subtitle1' }}

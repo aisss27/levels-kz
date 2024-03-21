@@ -3,9 +3,15 @@ import { MyCompanies } from './MyCompanies.tsx';
 import { PopularCompanies } from '../PopularCompanies/PopularCompanies.tsx';
 import { Salaries } from './Salaries.tsx';
 import { Traffic } from './Traffic.tsx';
-import { orders, companies } from './data.ts';
+import { orders } from './data.ts';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store.ts';
 
 export function Dashboard() {
+  const companiesList = useSelector(
+    (state: RootState) => state.companiesListReducer.companiesList
+  );
+
   const cardStyles = {
     height: '100%',
     display: 'flex',
@@ -34,7 +40,7 @@ export function Dashboard() {
           />
         </Grid>
         <Grid item lg={6} md={12} xs={12}>
-          <PopularCompanies companies={companies} sx={cardStyles} />
+          <PopularCompanies companies={companiesList} sx={cardStyles} />
         </Grid>
         <Grid item lg={6} md={12} xs={12}>
           <MyCompanies orders={orders} sx={cardStyles} />
