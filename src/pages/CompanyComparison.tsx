@@ -20,7 +20,7 @@ export const CompanyComparison = () => {
   );
 
   const comparedCompaniesList = companiesList.filter((company) =>
-    comparedCompaniesId.includes(company.id)
+    comparedCompaniesId.includes(company._id)
   );
 
   const handleDelete = (companyId: string) => {
@@ -38,27 +38,17 @@ export const CompanyComparison = () => {
           <TableHead>
             <TableRow>
               <TableCell>Company name</TableCell>
-              <TableCell>Company logo</TableCell>
-              <TableCell>Average salary</TableCell>
               <TableCell>Delete company</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {comparedCompaniesList.map((company) => (
-              <TableRow key={company.id}>
+              <TableRow key={company._id}>
                 <TableCell component="th" scope="row">
                   {company.name}
                 </TableCell>
                 <TableCell>
-                  <img
-                    src={company.image}
-                    alt={company.name}
-                    style={{ borderRadius: '50%', width: 100, height: 100 }}
-                  />
-                </TableCell>
-                <TableCell>{company.averageSalary}</TableCell>
-                <TableCell>
-                  <Button onClick={() => handleDelete(company.id)}>
+                  <Button onClick={() => handleDelete(company._id)}>
                     Delete
                   </Button>
                 </TableCell>
