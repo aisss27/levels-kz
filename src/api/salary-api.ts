@@ -6,10 +6,10 @@ export const salaryApi = {
   },
 
   createSalary(
-    email: string,
-    location: string,
-    specialization: string,
-    company: string,
+    email: string | null,
+    location: { name: string },
+    specialization: { name: string },
+    company: { name: string },
     salary: {
       base: number;
       bonus: number;
