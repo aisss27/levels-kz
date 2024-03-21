@@ -15,7 +15,14 @@ export function Dashboard() {
 
   return (
     <>
-      <Grid container spacing={3} sx={{ padding: '20px' }}>
+      <Grid
+        container
+        spacing={3}
+        sx={{
+          maxWidth: '1440px',
+          margin: '0 auto',
+        }}
+      >
         <Grid item lg={6} md={12} xs={12}>
           <Salaries sx={cardStyles} />
         </Grid>
