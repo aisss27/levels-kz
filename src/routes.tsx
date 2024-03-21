@@ -11,7 +11,7 @@ export const routes = [
     element: <Home />,
   },
   {
-    path: '/addsalary',
+    path: '/add-salary',
     element: <AddSalaryPage />,
   },
   {
@@ -27,7 +27,7 @@ export const routes = [
     element: <CompaniesPage />,
   },
   {
-    path: '/companypage/:id',
+    path: '/company-page/:id',
     element: <CompanyPage />,
   },
 ];

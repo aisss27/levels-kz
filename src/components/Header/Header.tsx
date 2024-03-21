@@ -32,7 +32,7 @@ export function Header() {
     if (value) {
       const selectedCompany = companies1.find((company) => company.name === value);
       if (selectedCompany) {
-        navigate(`/company/${selectedCompany.id}`);
+        navigate(`/company-page/${selectedCompany._id}`);
       }
     }
   };
@@ -59,7 +59,7 @@ export function Header() {
           </div>
         </NavLink>
         <ul className={styles.links}>
-          <NavLink className={styles.link} to="/addsalary">
+          <NavLink className={styles.link} to="/add-salary">
             Add
           </NavLink>
           <NavLink className={styles.link} to="/companies">
