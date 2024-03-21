@@ -6,11 +6,23 @@ import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import styles from './Header.module.css';
 import { companies } from '../Dashboard/data.ts';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store/store.ts';
+import { logout } from '../../store/slices/authSlice.ts';
 
 export function Header() {
+  const dispatch = useDispatch();
+  const { isAuthenticated } = useSelector(
+    (state: RootState) => state.authReducer
+  );
+
   const filterOptions = createFilterOptions({
     limit: 5,
   });
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
 
   return (
     <AppBar position="static">
@@ -35,9 +47,15 @@ export function Header() {
           <NavLink className={styles.link} to="/company-comparison">
             Company comparison
           </NavLink>
-          <NavLink className={styles.link} to="/login">
-            Login
-          </NavLink>
+          {isAuthenticated ? (
+            <p className={styles.link} onClick={handleLogout}>
+              Logout
+            </p>
+          ) : (
+            <NavLink className={styles.link} to="/login">
+              Login
+            </NavLink>
+          )}
         </ul>
 
         <Autocomplete

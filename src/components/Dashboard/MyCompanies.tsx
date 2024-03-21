@@ -2,7 +2,6 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import Chip from '@mui/material/Chip';
-import Divider from '@mui/material/Divider';
 import type { SxProps } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -20,16 +19,12 @@ export interface MyCompaniesProps {
   sx?: SxProps;
 }
 
-export function MyCompanies({
-  orders = [],
-  sx,
-}: MyCompaniesProps): React.JSX.Element {
+export function MyCompanies({ orders = [], sx }: MyCompaniesProps) {
   return (
     <Card sx={sx}>
       <CardHeader title="My Companies" />
-      <Divider />
-      <Box sx={{ overflowX: 'auto' }}>
-        <Table sx={{ minWidth: 800 }}>
+      <Box sx={{ overflowX: 'auto', width: '90%' }}>
+        <Table sx={{ width: '100%' }}>
           <TableHead>
             <TableRow>
               <TableCell>Order</TableCell>

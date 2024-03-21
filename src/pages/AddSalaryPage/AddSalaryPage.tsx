@@ -16,12 +16,12 @@ import {
   Theme,
 } from '@mui/material';
 import { Formik } from 'formik/dist';
-import { InferType } from 'yup';
-import { InitialValues } from './InitialValues';
-import { addSalarySchema } from './AddSalarySchema';
-import { companiesApi, setAuthToken } from '../../api/companies-api';
 import FormHelperText from '@mui/material/FormHelperText';
-export type AddSalary = InferType<typeof addSalarySchema>;
+import { addSalarySchema } from './AddSalarySchema';
+import { InitialValues } from './InitialValues';
+import { locationsApi } from '../../api/locations-api.ts';
+import { specializationsApi } from '../../api/specializations-api.ts';
+import { gradesApi } from '../../api/grades-api.ts';
 
 interface Location {
   _id: string;
@@ -79,7 +79,6 @@ const AddSalaryPage = () => {
   const [locations, setLocations] = useState<Location[]>([]);
   const [specializations, setSpecializations] = useState<Location[]>([]);
   const [grades, setGrades] = useState([]);
-  const [error, setError] = useState<string | null>(null);
   const [openCompany, setOpenCompany] = useState(false);
   const [openLocation, setOpenLocation] = useState(false);
   const [openSpecialization, setOpenSpecialization] = useState(false);
@@ -103,32 +102,26 @@ const AddSalaryPage = () => {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const token = '';
-        setAuthToken(token);
+    try {
+      locationsApi.getLocations().then((res) => {
+        setLocations(res.data);
+      });
 
-        const [companiesData, locationsData, specializationsData, gradesData] =
-          await Promise.all([
-            companiesApi.getCompanies(),
-            companiesApi.getLocations(),
-            companiesApi.getAllSpecializations(),
-            companiesApi.getGrades(),
-          ]);
-        setCompanies(companiesData.data);
-        setLocations(locationsData.data);
-        setSpecializations(specializationsData.data);
-        setGrades(gradesData.data);
-        console.log(specializations, locations);
-      } catch (error) {
-        setError('Error fetching locations');
-        console.log('Error fetching locations:', error);
-      }
-    };
+      specializationsApi.getAllSpecializations().then((res) => {
+        setSpecializations(res.data);
+      });
 
-    fetchData();
-    console.log(error);
-  });
+      companiesApi.getCompanies().then((res) => {
+        setCompanies(res.data);
+      });
+
+      gradesApi.getGrades().then((res) => {
+        setGrades(res.data);
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
 
   const handleFormSubmit = async () => {
     try {

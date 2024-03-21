@@ -1,5 +1,4 @@
 .container {
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,6 +37,10 @@
   color: #333;
 }
 
+.input:focus {
+  border-color: #3a6496ff;
+}
+
 .loginButton {
   background-color: #3a6496ff;
   color: #fff;
@@ -48,6 +51,6 @@
   transition: background-color 0.3s ease-in-out;
 }
 
-.login-button:hover {
+.loginButton:hover {
   background-color: #2980b9;
 }
