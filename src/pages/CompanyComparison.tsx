@@ -56,7 +56,7 @@ export const CompanyComparison = () => {
                     style={{ borderRadius: '50%', width: 100, height: 100 }}
                   />
                 </TableCell>
-                <TableCell>{company.avarageSalary}</TableCell>
+                <TableCell>{company.averageSalary}</TableCell>
                 <TableCell>
                   <Button onClick={() => handleDelete(company.id)}>
                     Delete

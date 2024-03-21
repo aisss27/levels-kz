@@ -1,15 +1,25 @@
+import { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import SearchIcon from '@mui/icons-material/Search';
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
-import styles from './Header.module.css';
-import { useEffect, useState } from 'react';
+import { companies } from '../Dashboard/data.ts';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store/store.ts';
+import { logout } from '../../store/slices/authSlice.ts';
 import { companiesApi } from '../../api/companies-api.ts';
+import styles from './Header.module.css';
 
 export function Header() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+    
+  const { isAuthenticated } = useSelector(
+    (state: RootState) => state.authReducer
+  );
+    
   const [companies1, setCompanies1] = useState([]);
 
   useEffect(() => {
@@ -30,6 +40,10 @@ export function Header() {
   const filterOptions = createFilterOptions({
     limit: 5,
   });
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
 
   return (
     <AppBar position="static">
@@ -54,9 +68,15 @@ export function Header() {
           <NavLink className={styles.link} to="/company-comparison">
             Company comparison
           </NavLink>
-          <NavLink className={styles.link} to="/login">
-            Login
-          </NavLink>
+          {isAuthenticated ? (
+            <p className={styles.link} onClick={handleLogout}>
+              Logout
+            </p>
+          ) : (
+            <NavLink className={styles.link} to="/login">
+              Login
+            </NavLink>
+          )}
         </ul>
 
         <Autocomplete

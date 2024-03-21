@@ -2,20 +2,29 @@ import { useState } from 'react';
 import axios from 'axios';
 import styles from './LoginPage.module.css';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { login } from '../../store/slices/authSlice.ts';
 
 export default function LoginPage() {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    axios.post('https://onelab-levels-api.vercel.app/api/auth/signin', {
-      email: email,
-      password: password,
-    })
-      .then(() => {
-        navigate('/');
-      })
+    try {
+      axios
+        .post('https://onelab-levels-api.vercel.app/api/auth/signin', {
+          email: email,
+          password: password,
+        })
+        .then((res) => {
+          dispatch(login({ token: res.data.token, email: email }));
+          navigate('/');
+        });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

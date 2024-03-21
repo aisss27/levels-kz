@@ -16,19 +16,24 @@ import {
   Theme,
 } from '@mui/material';
 import { Formik } from 'formik/dist';
-import { InferType } from 'yup';
-import { InitialValues } from './InitialValues';
-import { addSalarySchema } from './AddSalarySchema';
-import { companiesApi, setAuthToken } from '../../api/companies-api';
 import FormHelperText from '@mui/material/FormHelperText';
-export type AddSalary = InferType<typeof addSalarySchema>;
+import { addSalarySchema } from './AddSalarySchema';
+import { InitialValues } from './InitialValues';
+import { locationsApi } from '../../api/locations-api.ts';
+import { specializationsApi } from '../../api/specializations-api.ts';
+import { gradesApi } from '../../api/grades-api.ts';
 
 interface Location {
   _id: string;
   name: string;
 }
 
+interface Company {
+  name: string;
+  location: string;
+}
 interface SelectedValues {
+  company: string;
   location: string;
   specialization: string;
   grade: string;
@@ -60,18 +65,21 @@ const AddSalaryPage = () => {
   const theme = useTheme();
 
   const [selectedValues, setSelectedValues] = useState<SelectedValues>({
+    company: '',
     location: '',
     specialization: '',
     grade: '',
   });
+  /* const [email, setEmail] = useState('') // how to extract email? */
   const [yoe, setYoe] = useState(0);
   const [yac, setYac] = useState(0);
   const [base, setBase] = useState(0);
   const [bonus, setBonus] = useState(0);
+  const [companies, setCompanies] = useState<Company[]>([]);
   const [locations, setLocations] = useState<Location[]>([]);
   const [specializations, setSpecializations] = useState<Location[]>([]);
   const [grades, setGrades] = useState([]);
-  const [error, setError] = useState<string | null>(null);
+  const [openCompany, setOpenCompany] = useState(false);
   const [openLocation, setOpenLocation] = useState(false);
   const [openSpecialization, setOpenSpecialization] = useState(false);
   const [openGrade, setOpenGrade] = useState(false);
@@ -87,40 +95,57 @@ const AddSalaryPage = () => {
       ...prevState,
       [type]: value as string | number,
     }));
-
+    setOpenCompany(false);
     setOpenGrade(false);
     setOpenSpecialization(false);
     setOpenLocation(false);
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const token = '';
-        setAuthToken(token);
+    try {
+      locationsApi.getLocations().then((res) => {
+        setLocations(res.data);
+      });
 
-        const [locationsData, specializationsData, gradesData] =
-          await Promise.all([
-            companiesApi.getLocations(),
-            companiesApi.getAllSpecializations(),
-            companiesApi.getGrades(),
-          ]);
+      specializationsApi.getAllSpecializations().then((res) => {
+        setSpecializations(res.data);
+      });
 
-        setLocations(locationsData.data);
-        setSpecializations(specializationsData.data);
-        setGrades(gradesData.data);
-        console.log(specializations, locations);
-      } catch (error) {
-        setError('Error fetching locations');
-        console.log('Error fetching locations:', error);
-      }
-    };
+      companiesApi.getCompanies().then((res) => {
+        setCompanies(res.data);
+      });
 
-    fetchData();
-    console.log(error);
-  });
+      gradesApi.getGrades().then((res) => {
+        setGrades(res.data);
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
 
-  const handleFormSubmit = () => {};
+  const handleFormSubmit = async () => {
+    try {
+      const currentDate = new Date();
+      const currentDateAsString = currentDate.toISOString();
+      await companiesApi.createSalary(
+        /* email */
+        selectedValues.location,
+        selectedValues.specialization,
+        selectedValues.company,
+        {
+          base: base,
+          bonus: bonus,
+        },
+        yoe,
+        yac,
+        selectedValues.grade,
+        currentDateAsString
+      );
+    } catch (error) {
+      console.error('Error creating salary:', error);
+    }
+  };
+
   return (
     <Box
       sx={{
@@ -223,6 +248,34 @@ const AddSalaryPage = () => {
                 }
                 sx={{ gridColumn: 'span 2' }}
               />
+              <FormControl sx={{ gridColumn: 'span 4' }}>
+                <InputLabel id="demo-multiple-name-label">Company</InputLabel>
+                <Select
+                  open={openCompany}
+                  onOpen={() => setOpenCompany(true)}
+                  onClose={() => setOpenCompany(false)}
+                  labelId="demo-multiple-name-label"
+                  id="demo-multiple-name"
+                  value={selectedValues.company}
+                  onChange={(event) => handleSelectChange(event, 'company')}
+                  input={<OutlinedInput label="Company" />}
+                  MenuProps={MenuProps}
+                  error={touched.company && !selectedValues.company}
+                >
+                  {companies.map((company) => (
+                    <MenuItem
+                      key={company.name + company.location}
+                      value={company.name}
+                      style={getStyles(company.name, ['aaa'], theme)}
+                    >
+                      {company.name}
+                    </MenuItem>
+                  ))}
+                </Select>
+                {companies && touched.company && !selectedValues.company && (
+                  <FormHelperText>{errors.company}</FormHelperText>
+                )}
+              </FormControl>
               <FormControl sx={{ gridColumn: 'span 4' }}>
                 <InputLabel id="demo-multiple-name-label">Location</InputLabel>
                 <Select
