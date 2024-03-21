@@ -9,6 +9,7 @@ export const salaryApi = {
     email: string,
     location: string,
     specialization: string,
+    company: string,
     salary: {
       base: number;
       bonus: number;
@@ -22,6 +23,7 @@ export const salaryApi = {
       email,
       location,
       specialization,
+      company,
       salary,
       yoe,
       yac,
