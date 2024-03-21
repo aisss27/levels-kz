@@ -1,20 +1,41 @@
-import { NavLink } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import SearchIcon from '@mui/icons-material/Search';
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
-import styles from './Header.module.css';
 import { companies } from '../Dashboard/data.ts';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store.ts';
 import { logout } from '../../store/slices/authSlice.ts';
+import { companiesApi } from '../../api/companies-api.ts';
+import styles from './Header.module.css';
 
 export function Header() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+    
   const { isAuthenticated } = useSelector(
     (state: RootState) => state.authReducer
   );
+    
+  const [companies1, setCompanies1] = useState([]);
+
+  useEffect(() => {
+    companiesApi.getCompanies().then((res) => {
+      setCompanies1(res.data);
+    });
+  }, []);
+
+  const handleOptionChange = (event: Event, value: string) => {
+    if (value) {
+      const selectedCompany = companies1.find((company) => company.name === value);
+      if (selectedCompany) {
+        navigate(`/company/${selectedCompany.id}`);
+      }
+    }
+  };
 
   const filterOptions = createFilterOptions({
     limit: 5,
@@ -64,7 +85,8 @@ export function Header() {
           id="free-solo-2-demo"
           disableClearable
           filterOptions={filterOptions}
-          options={companies.map((option) => option.name)}
+          onChange={handleOptionChange}
+          options={companies1.map((company) => company.name)}
           renderInput={(params) => (
             <TextField
               {...params}
