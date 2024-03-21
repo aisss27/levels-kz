@@ -9,9 +9,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import type { SxProps } from '@mui/material/styles';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import PopularCompaniesModal from '../PopularCompaniesModal/PopularCompaniesModal.tsx';
-import { companyType } from '../../types/companyTypes.ts';
 import PopularCompaniesModal from '../../PopularCompaniesModal/PopularCompaniesModal.tsx';
+import { companyType } from '../../../types/companyTypes.ts';
 import { useNavigate } from 'react-router-dom';
 
 export interface Company {
@@ -47,7 +46,11 @@ export function PopularCompanies({ companies, sx }: LatestProductsProps) {
                 secondaryTypographyProps={{ variant: 'body2' }}
               />
 
-              <Button variant="contained" onClick={() => goToCompanyPage(company.id)} endIcon={<ArrowForwardIcon />}>
+              <Button
+                variant="contained"
+                onClick={() => goToCompanyPage(company._id)}
+                endIcon={<ArrowForwardIcon />}
+              >
                 explore
               </Button>
             </ListItem>

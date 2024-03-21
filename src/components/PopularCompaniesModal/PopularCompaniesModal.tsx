@@ -3,13 +3,13 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Modal from '@mui/material/Modal';
-import { Company } from '../PopularCompanies/PopularCompanies.tsx';
+import { companyType } from '../../types/companyTypes';
 import styles from './PopularCompaniesModal.module.css';
 
 type PopularCompaniesModalProps = {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
-  companies: Company[];
+  companies: companyType[];
 };
 
 export default function PopularCompaniesModal({
@@ -30,20 +30,9 @@ export default function PopularCompaniesModal({
         <table className={styles.table}>
           <tbody>
             {companies.map((company) => (
-              <tr key={company.id}>
+              <tr key={company._id}>
                 <td>
-                  <div className={styles.companyLogoName}>
-                    <Box
-                      component="img"
-                      src={company.image}
-                      sx={{
-                        borderRadius: 1,
-                        height: '48px',
-                        width: '48px',
-                      }}
-                    />
-                    {company.name}
-                  </div>
+                  <div className={styles.companyLogoName}>{company.name}</div>
                   <Button variant="contained" endIcon={<ArrowForwardIcon />}>
                     explore
                   </Button>

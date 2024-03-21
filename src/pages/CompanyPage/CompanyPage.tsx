@@ -6,18 +6,20 @@ import { Overview } from './Overview';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
-import { Icompany } from '../../store/slices/companiesListSlice';
+import { companyType } from '../../types/companyTypes';
 
 export const CompanyPage = () => {
   const [module, setModule] = useState('overview');
-  const [company, setCompany] = useState<Icompany | null>(null);
+  const [company, setCompany] = useState<companyType | null>(null);
   const { id } = useParams();
   const companiesList = useSelector(
     (state: RootState) => state.companiesListReducer.companiesList
   );
 
   useEffect(() => {
-    const selectedCompany = companiesList?.find((company) => company.id === id);
+    const selectedCompany = companiesList?.find(
+      (company) => company._id === id
+    );
     if (selectedCompany) {
       setCompany(selectedCompany);
     }
