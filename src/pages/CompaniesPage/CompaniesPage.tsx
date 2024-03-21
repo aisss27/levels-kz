@@ -7,7 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
-import { RootState } from '../../store/store.ts';
+import { AppDispatch, RootState } from '../../store/store.ts';
 import { addToComparison } from '../../store/slices/comparasionSlice.ts';
 import styles from './CompaniesPage.module.css';
 import { useNavigate } from 'react-router-dom';
@@ -15,7 +15,7 @@ import { useEffect } from 'react';
 import { getCompaniesList } from '../../store/slices/companiesListSlice.ts';
 
 export default function CompaniesPage() {
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
   const companiesList = useSelector(
     (state: RootState) => state.companiesListReducer.companiesList
@@ -46,7 +46,6 @@ export default function CompaniesPage() {
           <TableHead>
             <TableRow>
               <TableCell>Company</TableCell>
-              <TableCell>Average salary</TableCell>
               <TableCell>Add to compare</TableCell>
               <TableCell>Go to company page</TableCell>
             </TableRow>
@@ -54,19 +53,9 @@ export default function CompaniesPage() {
           <TableBody>
             {companiesList.map((company) => (
               <TableRow key={company._id}>
-                <TableCell
-                  component="th"
-                  scope="row"
-                  sx={{ display: 'flex', alignItems: 'center', gap: 4 }}
-                >
-                  <img
-                    src={company.image}
-                    alt={company.name}
-                    style={{ borderRadius: '50%', width: 50, height: 50 }}
-                  />
+                <TableCell component="th" scope="row">
                   {company.name}
                 </TableCell>
-                <TableCell>{company.averageSalary}</TableCell>
                 <TableCell>
                   <Button onClick={() => AddToCompare(company._id)}>Add</Button>
                 </TableCell>
