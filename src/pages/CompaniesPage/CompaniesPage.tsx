@@ -11,8 +11,6 @@ import { AppDispatch, RootState } from '../../store/store.ts';
 import { addToComparison } from '../../store/slices/comparasionSlice.ts';
 import styles from './CompaniesPage.module.css';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
-import { getCompaniesList } from '../../store/slices/companiesListSlice.ts';
 
 export default function CompaniesPage() {
   const dispatch: AppDispatch = useDispatch();
@@ -28,10 +26,6 @@ export default function CompaniesPage() {
   const goToCompanyPage = (companyId: string) => {
     navigate(`/company-page/${companyId}`);
   };
-
-  useEffect(() => {
-    dispatch(getCompaniesList());
-  }, []);
 
   return (
     <>
