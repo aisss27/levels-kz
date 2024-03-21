@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const authToken = localStorage.getItem('token');
-
 export const instance = axios.create({
   baseURL: 'https://onelab-levels-api.vercel.app/api/',
   withCredentials: false,
@@ -12,8 +10,9 @@ export const instance = axios.create({
 
 instance.interceptors.request.use(
   (config) => {
-    if (authToken) {
-      config.headers['Authorization'] = `Bearer ${authToken}`;
+    if (localStorage.getItem('token')) {
+      config.headers['Authorization'] =
+        `Bearer ${localStorage.getItem('token')}`;
     }
     return config;
   },
