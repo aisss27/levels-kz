@@ -15,7 +15,8 @@ export const salaryApi = {
     },
     yoe: number,
     yac: number,
-    grade: string
+    grade: string,
+    created: string
   ) {
     return instance.post('salaries', {
       email,
@@ -25,6 +26,7 @@ export const salaryApi = {
       yoe,
       yac,
       grade,
+      created,
     });
   },
 
