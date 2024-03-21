@@ -33,6 +33,7 @@ interface Location {
 }
 
 interface Company {
+  _id: string;
   name: string;
   location: string;
 }
@@ -269,7 +270,7 @@ const AddSalaryPage = () => {
                 >
                   {companies.map((company) => (
                     <MenuItem
-                      key={company.name + company.location}
+                      key={company._id}
                       value={company.name}
                       style={getStyles(company.name, ['aaa'], theme)}
                     >
