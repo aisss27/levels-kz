@@ -11,6 +11,8 @@ import { RootState } from '../../store/store.ts';
 import { addToComparison } from '../../store/slices/comparasionSlice.ts';
 import styles from './CompaniesPage.module.css';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { getCompaniesList } from '../../store/slices/companiesListSlice.ts';
 
 export default function CompaniesPage() {
   const dispatch = useDispatch();
@@ -24,8 +26,12 @@ export default function CompaniesPage() {
   };
 
   const goToCompanyPage = (companyId: string) => {
-    navigate(`/companypage/${companyId}`); // Navigate to the company's page
+    navigate(`/company-page/${companyId}`);
   };
+
+  useEffect(() => {
+    dispatch(getCompaniesList());
+  }, []);
 
   return (
     <>
@@ -47,7 +53,7 @@ export default function CompaniesPage() {
           </TableHead>
           <TableBody>
             {companiesList.map((company) => (
-              <TableRow key={company.id}>
+              <TableRow key={company._id}>
                 <TableCell
                   component="th"
                   scope="row"
@@ -62,10 +68,10 @@ export default function CompaniesPage() {
                 </TableCell>
                 <TableCell>{company.averageSalary}</TableCell>
                 <TableCell>
-                  <Button onClick={() => AddToCompare(company.id)}>Add</Button>
+                  <Button onClick={() => AddToCompare(company._id)}>Add</Button>
                 </TableCell>
                 <TableCell>
-                  <Button onClick={() => goToCompanyPage(company.id)}>
+                  <Button onClick={() => goToCompanyPage(company._id)}>
                     Go to
                   </Button>
                 </TableCell>
