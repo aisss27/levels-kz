@@ -4,7 +4,7 @@ let authToken: string | null = null;
 
 const instance = axios.create({
   baseURL: 'https://onelab-levels-api.vercel.app/api/',
-  withCredentials: true,
+  withCredentials: false,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -29,6 +29,9 @@ instance.interceptors.request.use(
 export const companiesApi = {
   getCompanies() {
     return instance.get('companies');
+  },
+  getCompanyById(id: string) {
+    return instance.get(`companies/${id}`);
   },
   createCompany(name: string) {
     return instance.post('companies', { name });
