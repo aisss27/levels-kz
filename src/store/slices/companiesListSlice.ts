@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { companiesApi } from '../../api/companies-api.ts';
+import { companyType } from '../../types/companyTypes.ts';
 
 export const getCompaniesList = createAsyncThunk(
   'companiesList/getCompanies',
@@ -8,18 +9,11 @@ export const getCompaniesList = createAsyncThunk(
   }
 );
 
-export interface Icompany {
-  _id: string;
-  name: string;
-  image: string;
-  averageSalary: number;
-}
+type initialStateType = {
+  companiesList: companyType[];
+};
 
-export interface IinitialState {
-  companiesList: Icompany[];
-}
-
-const initialState: IinitialState = {
+const initialState: initialStateType = {
   companiesList: [],
 };
 
@@ -29,7 +23,7 @@ export const companiesListSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getCompaniesList.fulfilled, (state, action) => {
-      state.companiesList.push(...action.payload);
+      state.companiesList = action.payload;
     });
   },
 });
