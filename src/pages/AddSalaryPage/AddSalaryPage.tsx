@@ -22,6 +22,10 @@ import { InitialValues } from './InitialValues';
 import { locationsApi } from '../../api/locations-api.ts';
 import { specializationsApi } from '../../api/specializations-api.ts';
 import { gradesApi } from '../../api/grades-api.ts';
+import { companiesApi } from '../../api/companies-api.ts';
+import { salaryApi } from '../../api/salary-api.ts';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store.ts';
 
 interface Location {
   _id: string;
@@ -60,6 +64,8 @@ function getStyles(name: string, selectedValues: string[], theme: Theme) {
 }
 
 const AddSalaryPage = () => {
+  const { userEmail } = useSelector((state: RootState) => state.authReducer);
+
   const { palette } = useTheme();
   const isNonMobile = useMediaQuery('(min-width: 1000px)');
   const theme = useTheme();
@@ -70,7 +76,6 @@ const AddSalaryPage = () => {
     specialization: '',
     grade: '',
   });
-  /* const [email, setEmail] = useState('') // how to extract email? */
   const [yoe, setYoe] = useState(0);
   const [yac, setYac] = useState(0);
   const [base, setBase] = useState(0);
@@ -127,11 +132,11 @@ const AddSalaryPage = () => {
     try {
       const currentDate = new Date();
       const currentDateAsString = currentDate.toISOString();
-      await companiesApi.createSalary(
-        /* email */
-        selectedValues.location,
-        selectedValues.specialization,
-        selectedValues.company,
+      await salaryApi.createSalary(
+        userEmail,
+        { name: selectedValues.location },
+        { name: selectedValues.specialization },
+        { name: selectedValues.company },
         {
           base: base,
           bonus: bonus,
