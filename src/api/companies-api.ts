@@ -5,6 +5,10 @@ export const companiesApi = {
     return instance.get('companies');
   },
 
+  getCompanyById(id: string) {
+    return instance.get(`companies/${id}`);
+  },
+
   createCompany(name: string) {
     return instance.post('companies', { name });
   },
