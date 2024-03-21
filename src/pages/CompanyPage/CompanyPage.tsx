@@ -13,12 +13,12 @@ export const CompanyPage = () => {
   const [company, setCompany] = useState<companyType | null>(null);
   const { id } = useParams();
   const companiesList = useSelector(
-    (state: RootState) => state.companiesListReducer.companiesList
+      (state: RootState) => state.companiesListReducer.companiesList
   );
 
   useEffect(() => {
     const selectedCompany = companiesList?.find(
-      (company) => company._id === id
+        (company) => company._id === id
     );
     if (selectedCompany) {
       setCompany(selectedCompany);
@@ -26,18 +26,18 @@ export const CompanyPage = () => {
   }, [id, companiesList]);
 
   return (
-    <Box
-      sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
-    >
-      {company ? (
-        <>
-          <Typography variant="h4">{company.name}</Typography>
-        </>
-      ) : (
-        <Typography variant="h4">Company Not Found!</Typography>
-      )}
-      <CompanyName id={id} setModule={setModule} />
-      {module === 'overview' ? <Overview /> : <CollapsibleTable />}
-    </Box>
+      <Box
+          sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+      >
+        {company ? (
+            <>
+              <Typography variant="h4">{company.name}</Typography>
+            </>
+        ) : (
+            <Typography variant="h4">Company Not Found!</Typography>
+        )}
+        <CompanyName id={id} setModule={setModule} />
+        {module === 'overview' ? <Overview /> : <CollapsibleTable companyName={company?.name} />}
+      </Box>
   );
 };

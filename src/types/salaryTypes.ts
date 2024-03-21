@@ -4,6 +4,7 @@ import {companyType} from './companyTypes.ts';
 
 export type salaryType = {
   email: string,
+  _id: string,
   location: locationType,
   specialization: specializationType,
   company: companyType,
@@ -15,4 +16,5 @@ export type salaryType = {
   yac: number,
   grade: string,
   created: string,
+  _v: number,
 };

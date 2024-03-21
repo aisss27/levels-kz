@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import {specializationType} from '../../types/specializationTypes.ts';
 import {salaryApi} from '../../api/salary-api.ts';
+import {salaryType} from '../../types/salaryTypes.ts';
 
 export const getSalariesList = createAsyncThunk(
   'salariesList/getSalaries',
@@ -10,7 +10,7 @@ export const getSalariesList = createAsyncThunk(
 );
 
 type initialStateType = {
-  salariesList: specializationType[];
+  salariesList: salaryType[];
 };
 
 const initialState: initialStateType = {
