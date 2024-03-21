@@ -3,8 +3,9 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Modal from '@mui/material/Modal';
-import { Company } from '../PopularCompanies/PopularCompanies.tsx';
+import { Company } from '../Dashboard/PopularCompanies/PopularCompanies.tsx';
 import styles from './PopularCompaniesModal.module.css';
+import { useNavigate } from 'react-router-dom';
 
 type PopularCompaniesModalProps = {
   open: boolean;
@@ -17,6 +18,12 @@ export default function PopularCompaniesModal({
   setOpen,
   companies,
 }: PopularCompaniesModalProps) {
+  const navigate = useNavigate();
+
+  const goToCompanyPage = (companyId: string) => {
+    navigate(`/companypage/${companyId}`); // Navigate to the company's page
+  };
+
   return (
     <Modal
       open={open}
@@ -44,7 +51,7 @@ export default function PopularCompaniesModal({
                     />
                     {company.name}
                   </div>
-                  <Button variant="contained" endIcon={<ArrowForwardIcon />}>
+                  <Button variant="contained"  endIcon={<ArrowForwardIcon onClick={() => goToCompanyPage(company.id)} />}>
                     explore
                   </Button>
                 </td>
