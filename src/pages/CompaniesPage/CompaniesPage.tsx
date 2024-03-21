@@ -10,15 +10,21 @@ import { Button } from '@mui/material';
 import { RootState } from '../../store/store.ts';
 import { addToComparison } from '../../store/slices/comparasionSlice.ts';
 import styles from './CompaniesPage.module.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function CompaniesPage() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const companiesList = useSelector(
     (state: RootState) => state.companiesListReducer.companiesList
   );
 
   const AddToCompare = (companyId: string) => {
     dispatch(addToComparison(companyId));
+  };
+
+  const goToCompanyPage = (companyId: string) => {
+    navigate(`/companypage/${companyId}`); // Navigate to the company's page
   };
 
   return (
@@ -54,12 +60,14 @@ export default function CompaniesPage() {
                   />
                   {company.name}
                 </TableCell>
-                <TableCell>{company.avarageSalary}</TableCell>
+                <TableCell>{company.averageSalary}</TableCell>
                 <TableCell>
                   <Button onClick={() => AddToCompare(company.id)}>Add</Button>
                 </TableCell>
                 <TableCell>
-                  <Button>Go to</Button>
+                  <Button onClick={() => goToCompanyPage(company.id)}>
+                    Go to
+                  </Button>
                 </TableCell>
               </TableRow>
             ))}
