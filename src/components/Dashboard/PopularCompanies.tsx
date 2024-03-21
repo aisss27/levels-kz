@@ -9,8 +9,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import type { SxProps } from '@mui/material/styles';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import PopularCompaniesModal from '../../PopularCompaniesModal/PopularCompaniesModal.tsx';
-import { companyType } from '../../../types/companyTypes.ts';
+import PopularCompaniesModal from '../PopularCompaniesModal/PopularCompaniesModal.tsx';
+import { companyType } from '../../types/companyTypes.ts';
 import { useNavigate } from 'react-router-dom';
 
 export interface Company {
@@ -29,7 +29,7 @@ export function PopularCompanies({ companies, sx }: LatestProductsProps) {
   const navigate = useNavigate();
 
   const goToCompanyPage = (companyId: string) => {
-    navigate(`/companypage/${companyId}`); // Navigate to the company's page
+    navigate(`/company-page/${companyId}`); // Navigate to the company's page
   };
 
   return (
