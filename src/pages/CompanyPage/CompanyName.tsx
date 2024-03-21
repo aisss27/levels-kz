@@ -44,7 +44,7 @@ export default function CompanyName({ setModule, id }: Props) {
       >
         {companiesList.map((company) =>
           id === company.id ? (
-            <img
+            <img key={company.id}
               src={company.image}
               alt={company.name}
               style={{ borderRadius: '50%', width: 50, height: 50 }}

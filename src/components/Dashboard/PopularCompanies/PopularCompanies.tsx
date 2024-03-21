@@ -11,6 +11,14 @@ import type { SxProps } from '@mui/material/styles';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import PopularCompaniesModal from '../PopularCompaniesModal/PopularCompaniesModal.tsx';
 import { companyType } from '../../types/companyTypes.ts';
+import PopularCompaniesModal from '../../PopularCompaniesModal/PopularCompaniesModal.tsx';
+import { useNavigate } from 'react-router-dom';
+
+export interface Company {
+  id: string;
+  image: string;
+  name: string;
+}
 
 export interface LatestProductsProps {
   companies: companyType[];
@@ -19,6 +27,11 @@ export interface LatestProductsProps {
 
 export function PopularCompanies({ companies, sx }: LatestProductsProps) {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const goToCompanyPage = (companyId: string) => {
+    navigate(`/companypage/${companyId}`); // Navigate to the company's page
+  };
 
   return (
     <Card sx={sx}>
@@ -34,7 +47,7 @@ export function PopularCompanies({ companies, sx }: LatestProductsProps) {
                 secondaryTypographyProps={{ variant: 'body2' }}
               />
 
-              <Button variant="contained" endIcon={<ArrowForwardIcon />}>
+              <Button variant="contained" onClick={() => goToCompanyPage(company.id)} endIcon={<ArrowForwardIcon />}>
                 explore
               </Button>
             </ListItem>
