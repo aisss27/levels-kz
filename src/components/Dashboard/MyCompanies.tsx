@@ -15,7 +15,7 @@ export interface Order {
 }
 
 export interface MyCompaniesProps {
-  orders?: Order[];
+  orders?: any[];
   sx?: SxProps;
 }
 
@@ -35,9 +35,9 @@ export function MyCompanies({ orders = [], sx }: MyCompaniesProps) {
             {orders.map((order) => {
               return (
                 <TableRow hover key={order.id}>
-                  <TableCell>{order.id}</TableCell>
+                  <TableCell>{order}</TableCell>
                   <TableCell>
-                    <Chip color={'primary'} label={'finished'} />
+                    <Chip color={'primary'} label={'added'} />
                   </TableCell>
                 </TableRow>
               );

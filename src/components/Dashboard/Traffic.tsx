@@ -29,12 +29,12 @@ export function Traffic({ chartSeries, labels, sx }: TrafficProps): React.JSX.El
               const label = labels[index];
 
               return (
-                <Stack key={label} spacing={1} sx={{ alignItems: 'center' }}>
-                  <Typography variant="h6">{label}</Typography>
-                  <Typography color="text.secondary" variant="subtitle2">
-                    {item}%
-                  </Typography>
-                </Stack>
+                  <Stack key={`${label}-${index}`} spacing={1} sx={{ alignItems: 'center' }}>
+                    <Typography variant="h6">{label}</Typography>
+                    <Typography color="text.secondary" variant="subtitle2">
+                      {item}%
+                    </Typography>
+                  </Stack>
               );
             })}
           </Stack>

@@ -12,7 +12,7 @@ export const Footer = () => {
               alt={developer.name}
               className={styles.developerImage}
             />
-            <h3>{developer.name}</h3>
+            <h3 className={styles.developerName}>{developer.name}</h3>
             <p>
               GitHub: <br />{' '}
               <a
